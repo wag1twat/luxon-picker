@@ -4,7 +4,7 @@
     "name": "yuri_shulga",
     "email": "up.pavlogradsky@gmail.com"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Luxon simple date picker with time",
   "keywords": [
     "typescript",
