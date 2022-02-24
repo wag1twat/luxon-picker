@@ -5,7 +5,7 @@
     "email": "up.pavlogradsky@gmail.com"
   },
   "main": "dist/index.js",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Date with time picker basing on the luxon library",
   "keywords": [
     "typescript",
