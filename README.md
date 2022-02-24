@@ -2,7 +2,7 @@
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
+import { LuxonPicker } from "shulga-pickers";
 import { DateTime } from "luxon";
 
 export default function App() {
@@ -14,12 +14,13 @@ export default function App() {
         inputFormat="dd.LL.yyyy HH:mm"
         date={date}
         onChangeDate={setDate}
-        components={components}
       />
     </div>
   );
 }
 ```
+
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/main/assests/default.png?raw=true)
 
 # Override components with UI-kit
 
@@ -27,8 +28,8 @@ export default function App() {
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
-import { Components } from "./LuxonPicker/components";
+import { LuxonPicker } from "shulga-pickers";
+import { Components } from "shulga-pickers/components";
 import { DateTime } from "luxon";
 import {
   Box,
@@ -134,3 +135,5 @@ export default function App() {
   );
 }
 ```
+
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/main/assests/chakra.png?raw=true)
