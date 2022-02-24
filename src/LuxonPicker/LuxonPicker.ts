@@ -39,8 +39,6 @@ const LuxonPicker: React.FC<LuxonPickerProps> = React.memo(
     date,
     onChangeDate,
   }) => {
-    console.log("render");
-
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const [currentDate, setCurrentDate] = React.useState(
