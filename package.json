@@ -5,20 +5,21 @@
   "keywords": [
     "typescript",
     "react",
-    "starter"
+    "picker",
+    "luxon"
   ],
   "main": "src/index.tsx",
   "dependencies": {
     "@chakra-ui/icons": "1.1.7",
-    "@chakra-ui/react": "1.8.5",
-    "@emotion/react": "11.8.1",
-    "@emotion/styled": "11.8.1",
+    "@chakra-ui/react": "^1.8.5",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@types/luxon": "2.0.9",
-    "framer-motion": "6.2.8",
+    "framer-motion": "^6.2.8",
     "luxon": "2.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "5.0.0"
   },
   "devDependencies": {
     "@types/react": "17.0.20",

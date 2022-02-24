@@ -1,0 +1,43 @@
+import React from "react";
+import { ButtonProps, ClockIconProps, DivProps, InputProps, SpanProps, TableBodyProps, TableProps, TdProps, ThProps, TrProps } from "./types";
+declare const ClockIcon: React.FC<ClockIconProps>;
+declare const Input: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
+declare const TimeInput: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
+declare const PrevMonthButton: React.FC<ButtonProps>;
+declare const NextMonthButton: React.FC<ButtonProps>;
+declare const DateButton: React.FC<ButtonProps & {
+    isActive: boolean;
+}>;
+declare const CloseButton: React.FC<ButtonProps>;
+declare const Week: React.FC<SpanProps>;
+declare const Month: React.FC<SpanProps>;
+declare const Container: React.FC<DivProps>;
+declare const PickerContainer: React.FC<DivProps>;
+declare const Table: React.FC<TableProps>;
+declare const Tr: React.FC<TrProps>;
+declare const Td: React.FC<TdProps>;
+declare const Th: React.FC<ThProps>;
+declare const TableBody: React.FC<TableBodyProps>;
+declare const TimeWrapper: React.FC<DivProps>;
+interface Components {
+    ClockIcon: typeof ClockIcon;
+    CloseButton: typeof CloseButton;
+    PrevMonthButton: typeof PrevMonthButton;
+    NextMonthButton: typeof NextMonthButton;
+    DateButton: typeof DateButton;
+    Week: typeof Week;
+    Month: typeof Month;
+    Input: typeof Input;
+    Container: typeof Container;
+    PickerContainer: typeof PickerContainer;
+    Table: typeof Table;
+    Tr: typeof Tr;
+    Td: typeof Td;
+    Th: typeof Th;
+    TableBody: typeof TableBody;
+    TimeWrapper: typeof TimeWrapper;
+    TimeInput: typeof TimeInput;
+}
+declare const defaultComponents: Components;
+export type { Components };
+export { defaultComponents };
