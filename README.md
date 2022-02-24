@@ -1,2 +1,1 @@
-# luxon-picker
-Created with CodeSandbox
+# Usage
