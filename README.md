@@ -14,7 +14,6 @@ export default function App() {
         inputFormat="dd.LL.yyyy HH:mm"
         date={date}
         onChangeDate={setDate}
-        components={components}
       />
     </div>
   );
