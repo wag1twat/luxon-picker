@@ -1,2 +1,2 @@
-declare const computePickerContainerStyles: (offsetHeight?: number, spacing?: number) => React.CSSProperties;
+declare const computePickerContainerStyles: (offsetHeight?: number) => React.CSSProperties;
 export { computePickerContainerStyles };

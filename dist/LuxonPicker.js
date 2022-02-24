@@ -16,15 +16,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 exports.LuxonPicker = void 0;
 var react_1 = __importDefault(require("react"));
-var components_1 = require("./components");
 var luxon_1 = require("luxon");
 var utils_1 = require("./utils");
+var components_1 = require("./components");
 var Popover_1 = require("./components/Popover");
 var columns = utils_1.generateColumns();
 var LuxonPicker = react_1["default"].memo(function (_a) {
     var _b;
     var _c = _a.locale, locale = _c === void 0 ? "ru" : _c, _d = _a.inputFormat, inputFormat = _d === void 0 ? "dd.LL.yyyy" : _d, components = _a.components, date = _a.date, onChangeDate = _a.onChangeDate;
-    console.log("render");
     var _e = utils_1.useDisclosure(), isOpen = _e.isOpen, onOpen = _e.onOpen, onClose = _e.onClose;
     var _f = react_1["default"].useState(luxon_1.DateTime.local().setLocale(locale)), currentDate = _f[0], setCurrentDate = _f[1];
     var rows = react_1["default"].useMemo(function () { return utils_1.matrixify(utils_1.getMonthDays(currentDate)); }, [currentDate]);
@@ -49,22 +48,28 @@ var LuxonPicker = react_1["default"].memo(function (_a) {
             }
         };
     }, [onChangeDate]);
-    var handleOpen = react_1["default"].useCallback(function (e) {
-        e.stopPropagation();
-        onOpen();
-    }, [onOpen]);
     var handleClose = react_1["default"].useCallback(function (e) {
         e.stopPropagation();
         onClose();
     }, [onClose]);
+    react_1["default"].useEffect(function () {
+        var current = inputRef.current;
+        if (current) {
+            current.addEventListener("click", onOpen);
+        }
+        return function () {
+            if (current) {
+                current.removeEventListener("click", onOpen);
+            }
+        };
+    }, [onOpen]);
     return react_1["default"].createElement(assignComponents.Container, {
         style: { position: "relative", display: "flex" }
     }, react_1["default"].createElement(assignComponents.Input, {
         readOnly: true,
         defaultValue: "",
         value: date ? date.toFormat(inputFormat) : "",
-        ref: inputRef,
-        onClick: handleOpen
+        ref: inputRef
     }), react_1["default"].createElement(Popover_1.Popover, {
         PickerContainer: assignComponents.PickerContainer,
         isOpen: isOpen,
