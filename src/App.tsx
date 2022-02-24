@@ -1,5 +1,6 @@
 import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
+// import { LuxonPicker } from "./LuxonPicker";
+import { LuxonPicker } from "shulga-pickers";
 import { DateTime } from "luxon";
 import {
   Box,
