@@ -1,6 +1,6 @@
 import React from "react";
-// import { LuxonPicker } from "./LuxonPicker";
-import { LuxonPicker } from "shulga-pickers";
+import { DateTimePicker } from "./DateTimePicker";
+// import { LuxonPicker } from "shulga-pickers";
 import { DateTime } from "luxon";
 import {
   Box,
@@ -17,7 +17,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Components } from "./LuxonPicker/components";
+import { Components } from "./DateTimePicker/components";
 
 const ForwardRefInput = React.forwardRef<
   HTMLInputElement,
@@ -95,7 +95,7 @@ export default function App() {
     <ChakraProvider resetCSS>
       <Stack>
         <Flex justifyContent="center">
-          <LuxonPicker
+          <DateTimePicker
             inputFormat="dd.LL.yyyy HH:mm"
             date={date}
             onChangeDate={setDate}

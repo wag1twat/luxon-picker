@@ -1,7 +1,7 @@
 import React from "react";
 import { DateTime } from "luxon";
 import { Components } from "./components";
-interface LuxonPickerProps {
+interface DateTimePickerProps {
     /**
      * locale default "ru"
      * @example locale="en"
@@ -19,5 +19,5 @@ interface LuxonPickerProps {
      */
     inputFormat?: string;
 }
-declare const LuxonPicker: React.FC<LuxonPickerProps>;
-export { LuxonPicker };
+declare const DateTimePicker: React.FC<DateTimePickerProps>;
+export { DateTimePicker };

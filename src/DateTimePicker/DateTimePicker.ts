@@ -12,7 +12,7 @@ import { Popover } from "./components/Popover";
 
 const columns = generateColumns();
 
-interface LuxonPickerProps {
+interface DateTimePickerProps {
   /**
    * locale default "ru"
    * @example locale="en"
@@ -31,7 +31,7 @@ interface LuxonPickerProps {
   inputFormat?: string;
 }
 
-const LuxonPicker: React.FC<LuxonPickerProps> = React.memo(
+const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
   ({
     locale = "ru",
     inputFormat = "dd.LL.yyyy",
@@ -310,4 +310,4 @@ const LuxonPicker: React.FC<LuxonPickerProps> = React.memo(
   }
 );
 
-export { LuxonPicker };
+export { DateTimePicker };
