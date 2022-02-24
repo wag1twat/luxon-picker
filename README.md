@@ -4,7 +4,7 @@
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
+import { LuxonPicker } from "shulga-pickers";
 import { DateTime } from "luxon";
 
 export default function App() {
@@ -29,8 +29,8 @@ export default function App() {
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
-import { Components } from "./LuxonPicker/components";
+import { LuxonPicker } from "shulga-pickers";
+import { Components } from "shulga-pickers/components";
 import { DateTime } from "luxon";
 import {
   Box,
