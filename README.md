@@ -1,7 +1,5 @@
 # Usage
 
-![Test Image 4](https://github.com/tograh/testrepository/3DTest.png)
-
 ```tsx
 import React from "react";
 import { LuxonPicker } from "shulga-pickers";
@@ -22,6 +20,8 @@ export default function App() {
   );
 }
 ```
+
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/dist/assests/default.png?raw=true)
 
 # Override components with UI-kit
 
@@ -136,3 +136,5 @@ export default function App() {
   );
 }
 ```
+
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/dist/assests/chakra.png?raw=true)
