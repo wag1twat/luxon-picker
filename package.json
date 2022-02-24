@@ -4,7 +4,7 @@
     "name": "yuri_shulga",
     "email": "up.pavlogradsky@gmail.com"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Luxon simple date picker with time",
   "keywords": [
     "typescript",
@@ -18,10 +18,5 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.20",
-    "@types/react-dom": "17.0.9",
-    "typescript": "4.4.2"
   }
 }
