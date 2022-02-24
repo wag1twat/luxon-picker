@@ -196,6 +196,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
                   defaultValue: currentDate.year,
                   value: currentDate.year,
                   onChange: handleChangeYear,
+                  style: { width: "100%" },
                 })
               ),
               React.createElement(
@@ -225,7 +226,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
                 { colSpan: 7 },
                 React.createElement(
                   assignComponents.Table,
-                  null,
+                  { style: { width: "100%" } },
                   React.createElement(
                     assignComponents.TableBody,
                     null,
