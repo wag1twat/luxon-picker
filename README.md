@@ -21,7 +21,7 @@ export default function App() {
 }
 ```
 
-![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/dist/assests/default.png?raw=true)
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/main/assests/default.png?raw=true)
 
 # Override components with UI-kit
 
@@ -137,4 +137,4 @@ export default function App() {
 }
 ```
 
-![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/dist/assests/chakra.png?raw=true)
+![Chakra-UI](https://github.com/wag1twat/luxon-picker/blob/main/assests/chakra.png?raw=true)
