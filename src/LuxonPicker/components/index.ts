@@ -1,61 +1,11 @@
 import React from "react";
-
-type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
-
-type SpanProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
-  HTMLSpanElement
->;
-
-type DivProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
-
-type TableProps = React.DetailedHTMLProps<
-  React.TableHTMLAttributes<HTMLTableElement>,
-  HTMLTableElement
->;
-
-type TableBodyProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLTableSectionElement>,
-  HTMLTableSectionElement
->;
-
-type TrProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLTableRowElement>,
-  HTMLTableRowElement
->;
-
-type ThProps = React.DetailedHTMLProps<
-  React.ThHTMLAttributes<HTMLTableCellElement>,
-  HTMLTableCellElement
->;
-
-type TdProps = React.DetailedHTMLProps<
-  React.TdHTMLAttributes<HTMLTableCellElement>,
-  HTMLTableCellElement
->;
-
-type ClockIconProps = React.DetailedHTMLProps<
-  React.ImgHTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
->;
-
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+import { ButtonProps, ClockIconProps, DivProps, InputProps, SpanProps, TableBodyProps, TableProps, TdProps, ThProps, TrProps } from "./types";
 
 const ClockIcon: React.FC<ClockIconProps> = ({ style, ...props }) => {
   return React.createElement("img", {
     style: { ...style, width: 30, height: 30 },
-    src:
-      "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48Zz48cGF0aCBkPSJNMjU2LDQ4QzE0MS4xLDQ4LDQ4LDE0MS4xLDQ4LDI1NnM5My4xLDIwOCwyMDgsMjA4YzExNC45LDAsMjA4LTkzLjEsMjA4LTIwOFMzNzAuOSw0OCwyNTYsNDh6IE0yNTYsNDQ2LjcgICBjLTEwNS4xLDAtMTkwLjctODUuNS0xOTAuNy0xOTAuN2MwLTEwNS4xLDg1LjUtMTkwLjcsMTkwLjctMTkwLjdjMTA1LjEsMCwxOTAuNyw4NS41LDE5MC43LDE5MC43ICAgQzQ0Ni43LDM2MS4xLDM2MS4xLDQ0Ni43LDI1Niw0NDYuN3oiLz48cG9seWdvbiBwb2ludHM9IjI1NiwyNTYgMTYwLDI1NiAxNjAsMjczLjMgMjczLjMsMjczLjMgMjczLjMsMTI4IDI1NiwxMjggICIvPjwvZz48L3N2Zz4=",
-    ...props
+    src: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48Zz48cGF0aCBkPSJNMjU2LDQ4QzE0MS4xLDQ4LDQ4LDE0MS4xLDQ4LDI1NnM5My4xLDIwOCwyMDgsMjA4YzExNC45LDAsMjA4LTkzLjEsMjA4LTIwOFMzNzAuOSw0OCwyNTYsNDh6IE0yNTYsNDQ2LjcgICBjLTEwNS4xLDAtMTkwLjctODUuNS0xOTAuNy0xOTAuN2MwLTEwNS4xLDg1LjUtMTkwLjcsMTkwLjctMTkwLjdjMTA1LjEsMCwxOTAuNyw4NS41LDE5MC43LDE5MC43ICAgQzQ0Ni43LDM2MS4xLDM2MS4xLDQ0Ni43LDI1Niw0NDYuN3oiLz48cG9seWdvbiBwb2ludHM9IjI1NiwyNTYgMTYwLDI1NiAxNjAsMjczLjMgMjczLjMsMjczLjMgMjczLjMsMTI4IDI1NiwxMjggICIvPjwvZz48L3N2Zz4=",
+    ...props,
   });
 };
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) =>
@@ -66,7 +16,7 @@ const TimeInput = React.forwardRef<HTMLInputElement, InputProps>(
     React.createElement("input", {
       style: { ...style, padding: 5, borderWidth: 1, borderRadius: 4 },
       ...props,
-      ref
+      ref,
     })
 );
 const PrevMonthButton: React.FC<ButtonProps> = ({ style, ...props }) =>
@@ -84,9 +34,9 @@ const DateButton: React.FC<ButtonProps & { isActive: boolean }> = ({
       padding: 5,
       borderWidth: 1,
       borderRadius: 4,
-      backgroundColor: isActive ? "lightblue" : "transparent"
+      backgroundColor: isActive ? "lightblue" : "transparent",
     },
-    ...props
+    ...props,
   });
 const CloseButton: React.FC<ButtonProps> = ({ style, ...props }) =>
   React.createElement("button", {
@@ -95,19 +45,19 @@ const CloseButton: React.FC<ButtonProps> = ({ style, ...props }) =>
       padding: 5,
       borderWidth: 1,
       borderRadius: 4,
-      backgroundColor: "lightblue"
+      backgroundColor: "lightblue",
     },
-    ...props
+    ...props,
   });
 const Week: React.FC<SpanProps> = ({ style, ...props }) =>
   React.createElement("span", {
     style: { ...style, textTransform: "capitalize" },
-    ...props
+    ...props,
   });
 const Month: React.FC<SpanProps> = ({ style, ...props }) =>
   React.createElement("span", {
     style: { ...style, textTransform: "capitalize" },
-    ...props
+    ...props,
   });
 const Container: React.FC<DivProps> = (props) =>
   React.createElement("div", props);
@@ -162,7 +112,7 @@ const defaultComponents: Components = {
   Th,
   TableBody,
   TimeWrapper,
-  TimeInput
+  TimeInput,
 };
 
 export type { Components };

@@ -1,15 +1,22 @@
 import React from "react";
-import { getMonthDays } from "./getMonthDays";
-import { generateColumns } from "../columns";
-import { matrixify } from "./matrixify";
-import { Components, defaultComponents } from "./components";
 import { DateTime } from "luxon";
-import { useDisclosure } from "./useDisclosure";
-import { CalendarPopover } from "./CalendarPopover";
+import {
+  getMonthDays,
+  matrixify,
+  useDisclosure,
+  computePickerContainerStyles,
+  generateColumns,
+} from "./utils";
+import { Components, defaultComponents } from "./components";
+import { Popover } from "./components/Popover";
 
 const columns = generateColumns();
 
-interface CalendarProps {
+interface LuxonPickerProps {
+  /**
+   * locale default "ru"
+   * @example locale="en"
+   */
   locale?: string;
   /**
    * Components must be memoized or const
@@ -17,40 +24,20 @@ interface CalendarProps {
   components?: Partial<Components>;
   date: DateTime | null;
   onChangeDate: (date: DateTime) => void;
+  /**
+   * Input date format
+   * @example DateTime.toFormat("dd.LL.yyyy")
+   */
   inputFormat?: string;
 }
 
-const computePickerContainerStyles = (
-  offsetHeight: number = 0
-): React.CSSProperties => {
-  return {
-    position: "absolute",
-    top: offsetHeight + 5,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 1,
-    width: "fit-content"
-  };
-};
-
-const tableStyles = (): React.CSSProperties => {
-  return {
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "lightblue",
-    borderRadius: 4,
-    borderCollapse: "separate"
-  };
-};
-
-const Calendar: React.FC<CalendarProps> = React.memo(
+const LuxonPicker: React.FC<LuxonPickerProps> = React.memo(
   ({
     locale = "ru",
     inputFormat = "dd.LL.yyyy",
     components,
     date,
-    onChangeDate
+    onChangeDate,
   }) => {
     console.log("render");
 
@@ -60,9 +47,10 @@ const Calendar: React.FC<CalendarProps> = React.memo(
       DateTime.local().setLocale(locale)
     );
 
-    const rows = React.useMemo(() => matrixify(getMonthDays(currentDate)), [
-      currentDate
-    ]);
+    const rows = React.useMemo(
+      () => matrixify(getMonthDays(currentDate)),
+      [currentDate]
+    );
 
     const assignComponents = React.useMemo(
       () => ({ ...defaultComponents, ...components }),
@@ -80,25 +68,21 @@ const Calendar: React.FC<CalendarProps> = React.memo(
     );
 
     const handleChangeTime = React.useCallback(
-      (
-        d: DateTime | null,
-        type: "hour" | "minute",
-        min: number,
-        max: number
-      ) => (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.stopPropagation();
-        if (d) {
-          const int = parseInt(e.target.value, 10);
+      (d: DateTime | null, type: "hour" | "minute", min: number, max: number) =>
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+          e.stopPropagation();
+          if (d) {
+            const int = parseInt(e.target.value, 10);
 
-          if (isNaN(int)) {
-            return onChangeDate(d.set({ [type]: 0 }));
-          }
+            if (isNaN(int)) {
+              return onChangeDate(d.set({ [type]: 0 }));
+            }
 
-          if (int >= min && int <= max) {
-            return onChangeDate(d.set({ [type]: int }));
+            if (int >= min && int <= max) {
+              return onChangeDate(d.set({ [type]: int }));
+            }
           }
-        }
-      },
+        },
       [onChangeDate]
     );
 
@@ -126,25 +110,31 @@ const Calendar: React.FC<CalendarProps> = React.memo(
     return React.createElement(
       assignComponents.Container,
       {
-        style: { position: "relative", display: "flex" }
+        style: { position: "relative", display: "flex" },
       },
       React.createElement(assignComponents.Input, {
         readOnly: true,
         defaultValue: "",
         value: date ? date.toFormat(inputFormat) : "",
-        ref: inputRef
+        ref: inputRef,
       }),
       React.createElement(
-        CalendarPopover,
+        Popover,
         {
           PickerContainer: assignComponents.PickerContainer,
           isOpen,
-          style: computePickerContainerStyles(inputRef.current?.offsetHeight)
+          style: computePickerContainerStyles(inputRef.current?.offsetHeight),
         },
         React.createElement(
           assignComponents.Table,
           {
-            style: tableStyles()
+            style: {
+              backgroundColor: "#fff",
+              borderWidth: 1,
+              borderColor: "lightblue",
+              borderRadius: 4,
+              borderCollapse: "separate",
+            },
           },
           React.createElement(
             assignComponents.TableBody,
@@ -163,8 +153,8 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                       setCurrentDate((prev) => prev.minus({ month: 1 }));
                     },
                     style: {
-                      cursor: "pointer"
-                    }
+                      cursor: "pointer",
+                    },
                   },
                   "<"
                 )
@@ -189,8 +179,8 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                       setCurrentDate((prev) => prev.plus({ month: 1 }));
                     },
                     style: {
-                      cursor: "pointer"
-                    }
+                      cursor: "pointer",
+                    },
                   },
                   ">"
                 )
@@ -240,7 +230,7 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                                 isActive: date
                                   ? date.ordinal === d.ordinal
                                   : false,
-                                onClick: handleChangeDate(d)
+                                onClick: handleChangeDate(d),
                               },
                               d.day
                             )
@@ -260,7 +250,7 @@ const Calendar: React.FC<CalendarProps> = React.memo(
               React.createElement(
                 assignComponents.Td,
                 {
-                  colSpan: 7
+                  colSpan: 7,
                 },
                 React.createElement(
                   assignComponents.TimeWrapper,
@@ -268,11 +258,11 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                     style: {
                       display: "flex",
                       justifyContent: "flex-end",
-                      alignItems: "center"
-                    }
+                      alignItems: "center",
+                    },
                   },
                   React.createElement(assignComponents.ClockIcon, {
-                    style: { margin: 10 }
+                    style: { margin: 10 },
                   }),
                   React.createElement(assignComponents.TimeInput, {
                     type: "number",
@@ -280,9 +270,9 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                     value: date?.hour.toString(),
                     onChange: handleChangeTime(date, "hour", 0, 23),
                     style: {
-                      maxWidth: 60
+                      maxWidth: 60,
                     },
-                    disabled: date === null
+                    disabled: date === null,
                   }),
                   React.createElement("span", { style: { margin: 10 } }, ":"),
                   React.createElement(assignComponents.TimeInput, {
@@ -291,9 +281,9 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                     value: date?.minute.toString(),
                     onChange: handleChangeTime(date, "minute", 0, 59),
                     style: {
-                      maxWidth: 60
+                      maxWidth: 60,
                     },
-                    disabled: date === null
+                    disabled: date === null,
                   })
                 )
               ),
@@ -309,7 +299,7 @@ const Calendar: React.FC<CalendarProps> = React.memo(
                   assignComponents.CloseButton,
                   {
                     style: { float: "right", cursor: "pointer" },
-                    onClick: handleClose
+                    onClick: handleClose,
                   },
                   "close"
                 )
@@ -322,4 +312,4 @@ const Calendar: React.FC<CalendarProps> = React.memo(
   }
 );
 
-export { Calendar };
+export { LuxonPicker };

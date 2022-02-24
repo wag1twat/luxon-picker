@@ -1,5 +1,5 @@
-import "./styles.css";
-import { Calendar } from "./calendar";
+import React from "react";
+import { LuxonPicker } from "./LuxonPicker";
 import { DateTime } from "luxon";
 import {
   Box,
@@ -12,11 +12,11 @@ import {
   Td,
   Text,
   Th,
-  Tr
+  Tr,
+  Flex,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import React from "react";
-import { Components } from "./calendar/components";
+import { Components } from "./LuxonPicker/components";
 
 const ForwardRefInput = React.forwardRef<
   HTMLInputElement,
@@ -84,32 +84,24 @@ const components: Partial<Components> = {
   },
   Th: (props) => {
     return <Th {...props} p={2} textAlign="center" />;
-  }
+  },
 };
 
 export default function App() {
   const [date, setDate] = React.useState<DateTime | null>(null);
 
-  console.log("date", date);
-
   return (
     <ChakraProvider resetCSS>
-      <div className="App">
-        <Stack>
-          <ForwardRefInput placeholder="fake" />
-          <ForwardRefInput placeholder="fake" />
-          <ForwardRefInput placeholder="fake" />
-          <Calendar
+      <Stack>
+        <Flex justifyContent="center">
+          <LuxonPicker
             inputFormat="dd.LL.yyyy HH:mm"
             date={date}
-            onChangeDate={(date) => {
-              setDate(date);
-            }}
+            onChangeDate={setDate}
             components={components}
           />
-          <ForwardRefInput placeholder="fake" />
-        </Stack>
-      </div>
+        </Flex>
+      </Stack>
     </ChakraProvider>
   );
 }
