@@ -48,6 +48,20 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
             }
         };
     }, [onChangeDate]);
+    var handleChangeYear = react_1["default"].useCallback(function (e) {
+        e.stopPropagation();
+        var int = parseInt(e.target.value, 10);
+        if (isNaN(int)) {
+            return;
+        }
+        setCurrentDate(function (prevCurrentDate) {
+            var nextCurrentDate = prevCurrentDate.set({ year: int });
+            if (nextCurrentDate.isValid) {
+                return nextCurrentDate;
+            }
+            return prevCurrentDate;
+        });
+    }, []);
     var handleClose = react_1["default"].useCallback(function (e) {
         e.stopPropagation();
         onClose();
@@ -82,7 +96,7 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
             borderRadius: 4,
             borderCollapse: "separate"
         }
-    }, react_1["default"].createElement(assignComponents.TableBody, null, react_1["default"].createElement(assignComponents.Tr, null, react_1["default"].createElement(assignComponents.Th, { colSpan: 1 }, react_1["default"].createElement(assignComponents.PrevMonthButton, {
+    }, react_1["default"].createElement(assignComponents.TableBody, null, react_1["default"].createElement(assignComponents.Tr, null, react_1["default"].createElement(assignComponents.Th, { colSpan: 2 }, react_1["default"].createElement(assignComponents.PrevMonthButton, {
         onClick: function (e) {
             e.stopPropagation();
             setCurrentDate(function (prev) { return prev.minus({ month: 1 }); });
@@ -90,7 +104,12 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
         style: {
             cursor: "pointer"
         }
-    }, "<")), react_1["default"].createElement(assignComponents.Th, { colSpan: 7 }, react_1["default"].createElement(assignComponents.Month, null, currentDate.monthLong)), react_1["default"].createElement(assignComponents.Th, { colSpan: 1 }, react_1["default"].createElement(assignComponents.NextMonthButton, {
+    }, "<")), react_1["default"].createElement(assignComponents.Th, { colSpan: 3, style: { textAlign: "left", width: "50%" } }, react_1["default"].createElement(assignComponents.Month, null, currentDate.monthLong)), react_1["default"].createElement(assignComponents.Th, { colSpan: 3, style: { textAlign: "left", width: "50%" } }, react_1["default"].createElement(assignComponents.YearInput, {
+        type: "number",
+        defaultValue: currentDate.year,
+        value: currentDate.year,
+        onChange: handleChangeYear
+    })), react_1["default"].createElement(assignComponents.Th, { colSpan: 2, style: {} }, react_1["default"].createElement(assignComponents.NextMonthButton, {
         onClick: function (e) {
             e.stopPropagation();
             setCurrentDate(function (prev) { return prev.plus({ month: 1 }); });
