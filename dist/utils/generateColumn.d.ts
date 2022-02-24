@@ -1,8 +1,8 @@
-declare type Column = {
+interface Column {
     weekday: number;
-};
-declare type GenerateColumn = {
+}
+interface GenerateColumn {
     (weekday: number): Column;
-};
+}
 declare const generateColumn: GenerateColumn;
 export { generateColumn };
