@@ -2,7 +2,7 @@
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "shulga-pickers";
+import { DateTimePicker } from "shulga-pickers";
 import { DateTime } from "luxon";
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <div>
-      <LuxonPicker
+      <DateTimePicker
         inputFormat="dd.LL.yyyy HH:mm"
         date={date}
         onChangeDate={setDate}
@@ -28,7 +28,7 @@ export default function App() {
 
 ```tsx
 import React from "react";
-import { LuxonPicker } from "shulga-pickers";
+import { DateTimePicker } from "shulga-pickers";
 import { Components } from "shulga-pickers/components";
 import { DateTime } from "luxon";
 import {
@@ -123,7 +123,7 @@ export default function App() {
     <ChakraProvider resetCSS>
       <Stack>
         <Flex justifyContent="center">
-          <LuxonPicker
+          <DateTimePicker
             inputFormat="dd.LL.yyyy HH:mm"
             date={date}
             onChangeDate={setDate}
