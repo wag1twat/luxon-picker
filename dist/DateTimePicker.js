@@ -14,14 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.LuxonPicker = void 0;
+exports.DateTimePicker = void 0;
 var react_1 = __importDefault(require("react"));
 var luxon_1 = require("luxon");
 var utils_1 = require("./utils");
 var components_1 = require("./components");
 var Popover_1 = require("./components/Popover");
 var columns = utils_1.generateColumns();
-var LuxonPicker = react_1["default"].memo(function (_a) {
+var DateTimePicker = react_1["default"].memo(function (_a) {
     var _b;
     var _c = _a.locale, locale = _c === void 0 ? "ru" : _c, _d = _a.inputFormat, inputFormat = _d === void 0 ? "dd.LL.yyyy" : _d, components = _a.components, date = _a.date, onChangeDate = _a.onChangeDate;
     var _e = utils_1.useDisclosure(), isOpen = _e.isOpen, onOpen = _e.onOpen, onClose = _e.onClose;
@@ -144,4 +144,4 @@ var LuxonPicker = react_1["default"].memo(function (_a) {
         onClick: handleClose
     }, "close")))))));
 });
-exports.LuxonPicker = LuxonPicker;
+exports.DateTimePicker = DateTimePicker;
