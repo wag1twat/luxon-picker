@@ -3,6 +3,7 @@ import { ButtonProps, ClockIconProps, DivProps, InputProps, SpanProps, TableBody
 declare const ClockIcon: React.FC<ClockIconProps>;
 declare const Input: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
 declare const TimeInput: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
+declare const YearInput: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
 declare const PrevMonthButton: React.FC<ButtonProps>;
 declare const NextMonthButton: React.FC<ButtonProps>;
 declare const DateButton: React.FC<ButtonProps & {
@@ -37,6 +38,7 @@ interface Components {
     TableBody: typeof TableBody;
     TimeWrapper: typeof TimeWrapper;
     TimeInput: typeof TimeInput;
+    YearInput: typeof YearInput;
 }
 declare const defaultComponents: Components;
 export type { Components };

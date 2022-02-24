@@ -38,6 +38,10 @@ var TimeInput = react_1["default"].forwardRef(function (_a, ref) {
     var style = _a.style, props = __rest(_a, ["style"]);
     return react_1["default"].createElement("input", __assign(__assign({ style: __assign(__assign({}, style), { padding: 5, borderWidth: 1, borderRadius: 4 }) }, props), { ref: ref }));
 });
+var YearInput = react_1["default"].forwardRef(function (_a, ref) {
+    var style = _a.style, props = __rest(_a, ["style"]);
+    return react_1["default"].createElement("input", __assign(__assign({ style: __assign(__assign({}, style), { padding: 5, borderWidth: 1, borderRadius: 4 }) }, props), { ref: ref }));
+});
 var PrevMonthButton = function (_a) {
     var style = _a.style, props = __rest(_a, ["style"]);
     return react_1["default"].createElement("button", __assign({ style: __assign(__assign({}, style), { padding: 10 }) }, props));
@@ -97,6 +101,7 @@ var defaultComponents = {
     Th: Th,
     TableBody: TableBody,
     TimeWrapper: TimeWrapper,
-    TimeInput: TimeInput
+    TimeInput: TimeInput,
+    YearInput: YearInput
 };
 exports.defaultComponents = defaultComponents;

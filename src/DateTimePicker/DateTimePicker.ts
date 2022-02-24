@@ -84,6 +84,28 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
       [onChangeDate]
     );
 
+    const handleChangeYear = React.useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.stopPropagation();
+
+        const int = parseInt(e.target.value, 10);
+
+        if (isNaN(int)) {
+          return;
+        }
+
+        setCurrentDate((prevCurrentDate) => {
+          const nextCurrentDate = prevCurrentDate.set({ year: int });
+
+          if (nextCurrentDate.isValid) {
+            return nextCurrentDate;
+          }
+          return prevCurrentDate;
+        });
+      },
+      []
+    );
+
     const handleClose = React.useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -142,7 +164,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
               null,
               React.createElement(
                 assignComponents.Th,
-                { colSpan: 1 },
+                { colSpan: 2 },
                 React.createElement(
                   assignComponents.PrevMonthButton,
                   {
@@ -159,7 +181,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
               ),
               React.createElement(
                 assignComponents.Th,
-                { colSpan: 7 },
+                { colSpan: 3, style: { textAlign: "left", width: "50%" } },
                 React.createElement(
                   assignComponents.Month,
                   null,
@@ -168,7 +190,17 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
               ),
               React.createElement(
                 assignComponents.Th,
-                { colSpan: 1 },
+                { colSpan: 3, style: { textAlign: "left", width: "50%" } },
+                React.createElement(assignComponents.YearInput, {
+                  type: "number",
+                  defaultValue: currentDate.year,
+                  value: currentDate.year,
+                  onChange: handleChangeYear,
+                })
+              ),
+              React.createElement(
+                assignComponents.Th,
+                { colSpan: 2, style: {} },
                 React.createElement(
                   assignComponents.NextMonthButton,
                   {

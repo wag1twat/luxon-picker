@@ -1,5 +1,16 @@
 import React from "react";
-import { ButtonProps, ClockIconProps, DivProps, InputProps, SpanProps, TableBodyProps, TableProps, TdProps, ThProps, TrProps } from "./types";
+import {
+  ButtonProps,
+  ClockIconProps,
+  DivProps,
+  InputProps,
+  SpanProps,
+  TableBodyProps,
+  TableProps,
+  TdProps,
+  ThProps,
+  TrProps,
+} from "./types";
 
 const ClockIcon: React.FC<ClockIconProps> = ({ style, ...props }) => {
   return React.createElement("img", {
@@ -12,6 +23,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) =>
   React.createElement("input", { ...props, ref })
 );
 const TimeInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ style, ...props }, ref) =>
+    React.createElement("input", {
+      style: { ...style, padding: 5, borderWidth: 1, borderRadius: 4 },
+      ...props,
+      ref,
+    })
+);
+const YearInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ style, ...props }, ref) =>
     React.createElement("input", {
       style: { ...style, padding: 5, borderWidth: 1, borderRadius: 4 },
@@ -93,6 +112,7 @@ interface Components {
   TableBody: typeof TableBody;
   TimeWrapper: typeof TimeWrapper;
   TimeInput: typeof TimeInput;
+  YearInput: typeof YearInput;
 }
 
 const defaultComponents: Components = {
@@ -113,6 +133,7 @@ const defaultComponents: Components = {
   TableBody,
   TimeWrapper,
   TimeInput,
+  YearInput,
 };
 
 export type { Components };
