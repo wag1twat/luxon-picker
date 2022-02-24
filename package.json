@@ -1,21 +1,19 @@
 {
-  "name": "react-typescript",
+  "name": "shulga-pickers",
+  "author": {
+    "name": "yuri_shulga",
+    "email": "up.pavlogradsky@gmail.com"
+  },
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "description": "Luxon simple date picker with time",
   "keywords": [
     "typescript",
     "react",
     "picker",
     "luxon"
   ],
-  "main": "src/index.tsx",
   "dependencies": {
-    "@chakra-ui/icons": "1.1.7",
-    "@chakra-ui/react": "^1.8.5",
-    "@emotion/react": "^11.8.1",
-    "@emotion/styled": "^11.8.1",
     "@types/luxon": "2.0.9",
-    "framer-motion": "^6.2.8",
     "luxon": "2.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -25,17 +23,5 @@
     "@types/react": "17.0.20",
     "@types/react-dom": "17.0.9",
     "typescript": "4.4.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
