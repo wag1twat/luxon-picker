@@ -108,7 +108,8 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
         type: "number",
         defaultValue: currentDate.year,
         value: currentDate.year,
-        onChange: handleChangeYear
+        onChange: handleChangeYear,
+        style: { width: "100%" }
     })), react_1["default"].createElement(assignComponents.Th, { colSpan: 2, style: {} }, react_1["default"].createElement(assignComponents.NextMonthButton, {
         onClick: function (e) {
             e.stopPropagation();
@@ -117,7 +118,7 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
         style: {
             cursor: "pointer"
         }
-    }, ">"))), react_1["default"].createElement(assignComponents.Tr, null, react_1["default"].createElement(assignComponents.Td), react_1["default"].createElement(assignComponents.Td, { colSpan: 7 }, react_1["default"].createElement(assignComponents.Table, null, react_1["default"].createElement(assignComponents.TableBody, null, react_1["default"].createElement(assignComponents.Tr, null, columns.map(function (column) {
+    }, ">"))), react_1["default"].createElement(assignComponents.Tr, null, react_1["default"].createElement(assignComponents.Td), react_1["default"].createElement(assignComponents.Td, { colSpan: 7 }, react_1["default"].createElement(assignComponents.Table, { style: { width: "100%" } }, react_1["default"].createElement(assignComponents.TableBody, null, react_1["default"].createElement(assignComponents.Tr, null, columns.map(function (column) {
         return react_1["default"].createElement(assignComponents.Th, { key: column.weekday }, react_1["default"].createElement(assignComponents.Week, null, currentDate.set({ weekday: column.weekday })
             .weekdayShort));
     })), rows.map(function (row, rowIndex) {
