@@ -2,7 +2,8 @@
   "name": "shulga-pickers",
   "author": {
     "name": "yuri_shulga",
-    "email": "up.pavlogradsky@gmail.com"
+    "email": "up.pavlogradsky@gmail.com",
+    "url": "https://github.com/wag1twat/luxon-picker"
   },
   "main": "dist/index.js",
   "version": "1.1.2",
