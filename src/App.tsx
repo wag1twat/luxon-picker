@@ -1,34 +1,5 @@
-# Usage
-
-```tsx
 import React from "react";
 import { LuxonPicker } from "./LuxonPicker";
-import { DateTime } from "luxon";
-
-export default function App() {
-  const [date, setDate] = React.useState<DateTime | null>(null);
-
-  return (
-    <div>
-      <LuxonPicker
-        inputFormat="dd.LL.yyyy HH:mm"
-        date={date}
-        onChangeDate={setDate}
-        components={components}
-      />
-    </div>
-  );
-}
-```
-
-# Override components with UI-kit
-
-## Example Chakra-UI
-
-```tsx
-import React from "react";
-import { LuxonPicker } from "./LuxonPicker";
-import { Components } from "./LuxonPicker/components";
 import { DateTime } from "luxon";
 import {
   Box,
@@ -45,6 +16,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Components } from "./LuxonPicker/components";
 
 const ForwardRefInput = React.forwardRef<
   HTMLInputElement,
@@ -133,4 +105,3 @@ export default function App() {
     </ChakraProvider>
   );
 }
-```
