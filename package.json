@@ -6,7 +6,7 @@
     "url": "https://github.com/wag1twat/shulga-pickers"
   },
   "main": "dist/index.js",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Date with time picker basing on the luxon library",
   "keywords": [
     "typescript",

@@ -18,3 +18,4 @@ __exportStar(require("./getMonthDays"), exports);
 __exportStar(require("./generateColumns"), exports);
 __exportStar(require("./mergeClasses"), exports);
 __exportStar(require("./computePickerContainerPosition"), exports);
+__exportStar(require("./formatters"), exports);
