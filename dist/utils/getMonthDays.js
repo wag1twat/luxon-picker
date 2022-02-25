@@ -10,7 +10,7 @@ var getMonthDays = function (date) {
         var nextDate = date.set({ day: day });
         if (day === 1) {
             if (nextDate.weekday !== 1) {
-                getPrevDates_1.getPrevDates(nextDate).forEach(function (prevDate) {
+                (0, getPrevDates_1.getPrevDates)(nextDate).forEach(function (prevDate) {
                     dates.push(prevDate);
                 });
                 dates.push(date.set({ day: day }));
@@ -22,7 +22,7 @@ var getMonthDays = function (date) {
         else if (day === daysInMonth) {
             if (nextDate.weekday !== 7) {
                 dates.push(nextDate);
-                getNextDates_1.getNextDates(nextDate).forEach(function (nextDate) {
+                (0, getNextDates_1.getNextDates)(nextDate).forEach(function (nextDate) {
                     dates.push(nextDate);
                 });
             }
