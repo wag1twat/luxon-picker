@@ -6,23 +6,23 @@ declare const TimeInput: React.ForwardRefExoticComponent<Pick<InputProps, "key" 
 declare const YearInput: React.ForwardRefExoticComponent<Pick<InputProps, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & React.RefAttributes<HTMLInputElement>>;
 declare const PrevMonthButton: React.FC<ButtonProps>;
 declare const NextMonthButton: React.FC<ButtonProps>;
-declare const DateButton: React.FC<ButtonProps & {
-    isActive: boolean;
-}>;
+declare const DateButton: React.FC<ButtonProps>;
 declare const CloseButton: React.FC<ButtonProps>;
+declare const NowButton: React.FC<ButtonProps>;
 declare const Week: React.FC<SpanProps>;
 declare const Month: React.FC<SpanProps>;
 declare const Container: React.FC<DivProps>;
-declare const PickerContainer: React.FC<DivProps>;
+declare const PickerContainer: React.ForwardRefExoticComponent<Pick<DivProps, "key" | keyof React.HTMLAttributes<HTMLDivElement>> & React.RefAttributes<HTMLDivElement>>;
 declare const Table: React.FC<TableProps>;
 declare const Tr: React.FC<TrProps>;
 declare const Td: React.FC<TdProps>;
 declare const Th: React.FC<ThProps>;
 declare const TableBody: React.FC<TableBodyProps>;
-declare const TimeWrapper: React.FC<DivProps>;
+declare const TimeContainer: React.FC<DivProps>;
 interface Components {
     ClockIcon: typeof ClockIcon;
     CloseButton: typeof CloseButton;
+    NowButton: typeof NowButton;
     PrevMonthButton: typeof PrevMonthButton;
     NextMonthButton: typeof NextMonthButton;
     DateButton: typeof DateButton;
@@ -36,7 +36,7 @@ interface Components {
     Td: typeof Td;
     Th: typeof Th;
     TableBody: typeof TableBody;
-    TimeWrapper: typeof TimeWrapper;
+    TimeContainer: typeof TimeContainer;
     TimeInput: typeof TimeInput;
     YearInput: typeof YearInput;
 }
