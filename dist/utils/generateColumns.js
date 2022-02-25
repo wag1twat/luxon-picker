@@ -3,6 +3,6 @@ exports.__esModule = true;
 exports.generateColumns = void 0;
 var generateColumn_1 = require("./generateColumn");
 var generateColumns = function () {
-    return Array.from(Array(7).keys()).map(function (weekday) { return generateColumn_1.generateColumn(weekday + 1); });
+    return Array.from(Array(7).keys()).map(function (weekday) { return (0, generateColumn_1.generateColumn)(weekday + 1); });
 };
 exports.generateColumns = generateColumns;

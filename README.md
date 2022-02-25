@@ -75,7 +75,10 @@ const components: Partial<Components> = {
   CloseButton: (props) => {
     return <Button {...props} size="sm" />;
   },
-  DateButton: ({ isActive, ...props }) => {
+  DateButton: ({ ...props }) => {
+    return <Button {...props} size="sm" />;
+  },
+  NowButton: ({ isActive, ...props }) => {
     return <Button isActive={isActive} {...props} size="sm" />;
   },
   Week: ({ children, ...props }) => {

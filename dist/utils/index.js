@@ -15,5 +15,6 @@ __exportStar(require("./matrixify"), exports);
 __exportStar(require("./getPrevDates"), exports);
 __exportStar(require("./getNextDates"), exports);
 __exportStar(require("./getMonthDays"), exports);
-__exportStar(require("./computePickerContainerStyles"), exports);
 __exportStar(require("./generateColumns"), exports);
+__exportStar(require("./mergeClasses"), exports);
+__exportStar(require("./computePickerContainerPosition"), exports);
