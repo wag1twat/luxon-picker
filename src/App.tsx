@@ -47,17 +47,20 @@ const components: Partial<Components> = {
   CloseButton: (props) => {
     return <Button {...props} size="sm" />;
   },
-  DateButton: ({ isActive, ...props }) => {
-    return <Button isActive={isActive} {...props} size="sm" />;
+  NowButton: (props) => {
+    return <Button {...props} size="sm" />;
   },
-  Week: ({ children, ...props }) => {
+  DateButton: ({ ...props }) => {
+    return <Button {...props} size="sm" />;
+  },
+  Week: ({ children }) => {
     return (
       <Text textTransform="capitalize" fontWeight="bold">
         {children}
       </Text>
     );
   },
-  Month: ({ children, ...props }) => {
+  Month: ({ children }) => {
     return (
       <Text textTransform="capitalize" fontWeight="bold">
         {children}
@@ -68,9 +71,9 @@ const components: Partial<Components> = {
   Container: (props) => {
     return <Box {...props} />;
   },
-  PickerContainer: (props) => {
-    return <Box {...props} />;
-  },
+  PickerContainer: React.forwardRef((props, ref) => {
+    return <Box {...props} ref={ref} />;
+  }),
   Table: (props) => {
     return <Table {...props} gap={1} variant="unstyled" />;
   },
@@ -94,14 +97,16 @@ export default function App() {
   return (
     <ChakraProvider resetCSS>
       <Stack>
-        <Flex justifyContent="center">
-          <DateTimePicker
-            inputFormat="dd.LL.yyyy HH:mm"
-            date={date}
-            onChangeDate={setDate}
-            components={components}
-          />
-        </Flex>
+        <Stack height="100vh">
+          <Flex>
+            <DateTimePicker
+              inputFormat="dd.LL.yyyy HH:mm"
+              date={date}
+              onChangeDate={setDate}
+              components={components}
+            />
+          </Flex>
+        </Stack>
       </Stack>
     </ChakraProvider>
   );
