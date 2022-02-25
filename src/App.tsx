@@ -1,6 +1,6 @@
 import React from "react";
 // import { DateTimePicker } from "./DateTimePicker";
-// import { DateTimePicker } from "shulga-pickers";
+import { DateTimePicker } from "shulga-pickers/dist/DateTimePicker";
 import { DateTime } from "luxon";
 import {
   Box,
