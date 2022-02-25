@@ -19,7 +19,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "^4.0.3",
-    "shulga-pickers": "^1.0.9"
+    "shulga-pickers": "^1.1.7"
   },
   "devDependencies": {
     "@types/react": "^17.0.20",
@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dist": "tsc --jsx preserve src/DateTimePicker/*.ts src/DateTimePicker/*.tsx --declaration --esModuleInterop --alwaysStrict --outDir dist"
+    "dist-ts": "tsc src/DateTimePicker/*.ts --declaration --esModuleInterop --alwaysStrict --outDir dist",
+    "dist-tsx": "tsc --jsx preserve src/DateTimePicker/*.tsx --declaration --esModuleInterop --alwaysStrict --outDir dist"
   },
   "eslintConfig": {
     "extends": [
