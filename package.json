@@ -19,7 +19,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "^4.0.3",
-    "shulga-pickers": "^1.2.0"
+    "shulga-pickers": "^1.2.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.20",
