@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "./date-time-picker.module.css";
 import { DateTime } from "luxon";
 import {
   getMonthDays,
@@ -11,6 +10,8 @@ import {
 } from "./utils";
 import { Components, defaultComponents } from "./components";
 import { Popover } from "./components/Popover";
+
+const classes = require("./date-time-picker.module.css");
 
 const columns = generateColumns();
 
