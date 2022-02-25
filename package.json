@@ -6,7 +6,7 @@
     "url": "https://github.com/wag1twat/luxon-picker"
   },
   "main": "dist/index.js",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "Date with time picker basing on the luxon library",
   "keywords": [
     "typescript",
