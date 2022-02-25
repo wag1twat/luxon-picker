@@ -75,6 +75,9 @@ const components: Partial<Components> = {
   CloseButton: (props) => {
     return <Button {...props} size="sm" />;
   },
+  DateButton: ({ ...props }) => {
+    return <Button {...props} size="sm" />;
+  },
   DateButton: ({ isActive, ...props }) => {
     return <Button isActive={isActive} {...props} size="sm" />;
   },
