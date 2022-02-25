@@ -1,0 +1,126 @@
+.container {
+  position: relative;
+  display: flex;
+}
+
+.picker_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: min-content;
+  width: min-content;
+  /* top: calc(100% + 5px); */
+}
+
+/* root table */
+
+.root_table {
+  background-color: #fff;
+  border-width: 1px;
+  border-color: lightblue;
+  border-radius: 4px;
+  border-collapse: separate !important;
+}
+
+.root_table .root_table_body .root_tr .root_th .prev_month_button {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.root_table .root_table_body .root_tr .root_th .next_month_button {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.root_table .root_table_body .root_tr .root_th + .root_th_month {
+  text-align: left;
+  width: 50%;
+}
+
+.root_table .root_table_body .root_tr .root_th + .root_th_year {
+  text-align: left;
+  width: 50%;
+}
+
+.root_table .root_table_body .root_tr .root_th + .root_th_year .input_year {
+  width: 100%;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+/* calendar table */
+
+.calendar_table {
+  width: 100%;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_date_button {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_date_button[data-date-active="true"] {
+  background-color: lightblue;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_clock_icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_time_input {
+  width: 100%;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_close_button {
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 4px;
+  float: right;
+  width: 100%;
+}
+
+.calendar_table
+  .calendar_table_body
+  .calendar_tr
+  .calendar_td
+  .calendar_now_button {
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 4px;
+  float: right;
+  width: 100%;
+}
