@@ -7,6 +7,7 @@ import {
   generateColumns,
   mergeClasses,
   computePickerContainerPosition,
+  useOutsideClick,
 } from "./utils";
 import { Components, defaultComponents } from "./components";
 
@@ -68,7 +69,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
     );
 
     const handleClose = React.useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement> | Event) => {
         e.stopPropagation();
         onClose();
       },
@@ -153,6 +154,13 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
       };
     }, [handleOpen]);
 
+    const pickerContainerRef = React.useRef<HTMLDivElement | null>(null);
+
+    useOutsideClick({
+      ref: pickerContainerRef,
+      handler: (e) => handleClose(e),
+    });
+
     return (
       <assignComponents.Container className={classes.container}>
         <assignComponents.Input
@@ -173,6 +181,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
               ref.style.left = styles.left;
               ref.style.right = styles.right;
             }
+
+            pickerContainerRef.current = ref;
           }}
         >
           <assignComponents.Table className={classes.root_table}>

@@ -7,3 +7,4 @@ export * from "./generateColumns";
 export * from "./mergeClasses";
 export * from "./computePickerContainerPosition";
 export * from "./formatters";
+export * from "./useOutsideClick";
