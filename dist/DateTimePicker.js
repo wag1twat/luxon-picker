@@ -20,6 +20,7 @@ var react_1 = __importDefault(require("react"));
 var luxon_1 = require("luxon");
 var utils_1 = require("./utils");
 var components_1 = require("./components");
+var useOutsideClick_1 = require("./utils/useOutsideClick");
 var classes = require("./date-time-picker.module.css");
 var columns = (0, utils_1.generateColumns)();
 var DateTimePicker = react_1["default"].memo(function (_a) {
@@ -89,6 +90,11 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
             }
         };
     }, [handleOpen]);
+    var pickerContainerRef = react_1["default"].useRef(null);
+    (0, useOutsideClick_1.useOutsideClick)({
+        ref: pickerContainerRef,
+        handler: function (e) { return handleClose(e); }
+    });
     return ((0, jsx_runtime_1.jsxs)(assignComponents.Container, __assign({ className: classes.container }, { children: [(0, jsx_runtime_1.jsx)(assignComponents.Input, { ref: inputRef, readOnly: true, defaultValue: "", value: date ? date.toFormat(inputFormat) : "" }, void 0), (0, jsx_runtime_1.jsx)(assignComponents.PickerContainer, __assign({ className: classes.picker_container, hidden: !isOpen, ref: function (ref) {
                     if (ref) {
                         var styles = (0, utils_1.computePickerContainerPosition)(ref, inputRef);
@@ -96,6 +102,7 @@ var DateTimePicker = react_1["default"].memo(function (_a) {
                         ref.style.left = styles.left;
                         ref.style.right = styles.right;
                     }
+                    pickerContainerRef.current = ref;
                 } }, { children: (0, jsx_runtime_1.jsx)(assignComponents.Table, __assign({ className: classes.root_table }, { children: (0, jsx_runtime_1.jsxs)(assignComponents.TableBody, __assign({ className: classes.root_table_body }, { children: [(0, jsx_runtime_1.jsxs)(assignComponents.Tr, __assign({ className: classes.root_tr }, { children: [(0, jsx_runtime_1.jsx)(assignComponents.Th, __assign({ colSpan: 2, className: classes.root_th }, { children: (0, jsx_runtime_1.jsx)(assignComponents.PrevMonthButton, { className: classes.prev_month_button, onClick: handlePrevMonth, children: "<" }, void 0) }), void 0), (0, jsx_runtime_1.jsx)(assignComponents.Th, __assign({ colSpan: 3, className: (0, utils_1.mergeClasses)(classes.root_th, classes.root_th_month) }, { children: (0, jsx_runtime_1.jsx)(assignComponents.Month, { children: currentDate.monthLong }, void 0) }), void 0), (0, jsx_runtime_1.jsx)(assignComponents.Th, __assign({ colSpan: 3, className: (0, utils_1.mergeClasses)(classes.root_th, classes.root_th_year) }, { children: (0, jsx_runtime_1.jsx)(assignComponents.YearInput, { type: "number", defaultValue: currentDate.year, value: currentDate.year, onChange: handleChangeYear, className: classes.input_year }, void 0) }), void 0), (0, jsx_runtime_1.jsx)(assignComponents.Th, __assign({ colSpan: 2, className: classes.root_th }, { children: (0, jsx_runtime_1.jsx)(assignComponents.NextMonthButton, { className: classes.next_month_button, onClick: handleNextMonth, children: ">" }, void 0) }), void 0)] }), void 0), (0, jsx_runtime_1.jsx)(assignComponents.Tr, __assign({ className: classes.root_tr }, { children: (0, jsx_runtime_1.jsx)(assignComponents.Td, __assign({ colSpan: 9, className: classes.root_td }, { children: (0, jsx_runtime_1.jsx)(assignComponents.Table, __assign({ className: classes.calendar_table }, { children: (0, jsx_runtime_1.jsxs)(assignComponents.TableBody, __assign({ className: classes.calendar_table_body }, { children: [(0, jsx_runtime_1.jsx)(assignComponents.Tr, __assign({ className: classes.calendar_tr }, { children: columns.map(function (_a) {
                                                         var weekday = _a.weekday;
                                                         return ((0, jsx_runtime_1.jsx)(assignComponents.Th, __assign({ className: classes.calendar_th }, { children: (0, jsx_runtime_1.jsx)(assignComponents.Week, { children: currentDate.set({ weekday: weekday }).weekdayShort }, void 0) }), "__weekday__" + weekday + "__"));
