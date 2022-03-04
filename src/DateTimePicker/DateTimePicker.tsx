@@ -7,9 +7,9 @@ import {
   generateColumns,
   mergeClasses,
   computePickerContainerPosition,
+  useOutsideClick,
 } from "./utils";
 import { Components, defaultComponents } from "./components";
-import { useOutsideClick } from "./utils/useOutsideClick";
 
 const classes = require("./date-time-picker.module.css");
 
