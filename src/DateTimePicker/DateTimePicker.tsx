@@ -9,7 +9,6 @@ import {
   computePickerContainerPosition,
 } from "./utils";
 import { Components, defaultComponents } from "./components";
-import { Popover } from "./components/Popover";
 
 const classes = require("./date-time-picker.module.css");
 
@@ -162,177 +161,177 @@ const DateTimePicker: React.FC<DateTimePickerProps> = React.memo(
           defaultValue=""
           value={date ? date.toFormat(inputFormat) : ""}
         />
-        <Popover isOpen={isOpen}>
-          <assignComponents.PickerContainer
-            className={classes.picker_container}
-            ref={(ref) => {
-              if (ref) {
-                const styles = computePickerContainerPosition(ref, inputRef);
 
-                ref.style.top = styles.top;
-                ref.style.left = styles.left;
-                ref.style.right = styles.right;
-              }
-            }}
-          >
-            <assignComponents.Table className={classes.root_table}>
-              <assignComponents.TableBody className={classes.root_table_body}>
-                <assignComponents.Tr className={classes.root_tr}>
-                  <assignComponents.Th colSpan={2} className={classes.root_th}>
-                    <assignComponents.PrevMonthButton
-                      className={classes.prev_month_button}
-                      onClick={handlePrevMonth}
-                      children={"<"}
-                    />
-                  </assignComponents.Th>
-                  <assignComponents.Th
-                    colSpan={3}
-                    className={mergeClasses(
-                      classes.root_th,
-                      classes.root_th_month,
-                    )}
-                  >
-                    <assignComponents.Month children={currentDate.monthLong} />
-                  </assignComponents.Th>
-                  <assignComponents.Th
-                    colSpan={3}
-                    className={mergeClasses(
-                      classes.root_th,
-                      classes.root_th_year,
-                    )}
-                  >
-                    <assignComponents.YearInput
-                      type="number"
-                      defaultValue={currentDate.year}
-                      value={currentDate.year}
-                      onChange={handleChangeYear}
-                      className={classes.input_year}
-                    />
-                  </assignComponents.Th>
-                  <assignComponents.Th colSpan={2} className={classes.root_th}>
-                    <assignComponents.NextMonthButton
-                      className={classes.next_month_button}
-                      onClick={handleNextMonth}
-                      children={">"}
-                    />
-                  </assignComponents.Th>
-                </assignComponents.Tr>
-                <assignComponents.Tr className={classes.root_tr}>
-                  <assignComponents.Td colSpan={9} className={classes.root_td}>
-                    <assignComponents.Table className={classes.calendar_table}>
-                      <assignComponents.TableBody
-                        className={classes.calendar_table_body}
-                      >
-                        <assignComponents.Tr className={classes.calendar_tr}>
-                          {columns.map(({ weekday }) => {
-                            return (
-                              <assignComponents.Th
-                                key={`__weekday__${weekday}__`}
-                                className={classes.calendar_th}
-                              >
-                                <assignComponents.Week>
-                                  {currentDate.set({ weekday }).weekdayShort}
-                                </assignComponents.Week>
-                              </assignComponents.Th>
-                            );
-                          })}
-                        </assignComponents.Tr>
-                        {rows.map((dates, datesIndex) => {
+        <assignComponents.PickerContainer
+          className={classes.picker_container}
+          hidden={!isOpen}
+          ref={(ref) => {
+            if (ref) {
+              const styles = computePickerContainerPosition(ref, inputRef);
+
+              ref.style.top = styles.top;
+              ref.style.left = styles.left;
+              ref.style.right = styles.right;
+            }
+          }}
+        >
+          <assignComponents.Table className={classes.root_table}>
+            <assignComponents.TableBody className={classes.root_table_body}>
+              <assignComponents.Tr className={classes.root_tr}>
+                <assignComponents.Th colSpan={2} className={classes.root_th}>
+                  <assignComponents.PrevMonthButton
+                    className={classes.prev_month_button}
+                    onClick={handlePrevMonth}
+                    children={"<"}
+                  />
+                </assignComponents.Th>
+                <assignComponents.Th
+                  colSpan={3}
+                  className={mergeClasses(
+                    classes.root_th,
+                    classes.root_th_month,
+                  )}
+                >
+                  <assignComponents.Month children={currentDate.monthLong} />
+                </assignComponents.Th>
+                <assignComponents.Th
+                  colSpan={3}
+                  className={mergeClasses(
+                    classes.root_th,
+                    classes.root_th_year,
+                  )}
+                >
+                  <assignComponents.YearInput
+                    type="number"
+                    defaultValue={currentDate.year}
+                    value={currentDate.year}
+                    onChange={handleChangeYear}
+                    className={classes.input_year}
+                  />
+                </assignComponents.Th>
+                <assignComponents.Th colSpan={2} className={classes.root_th}>
+                  <assignComponents.NextMonthButton
+                    className={classes.next_month_button}
+                    onClick={handleNextMonth}
+                    children={">"}
+                  />
+                </assignComponents.Th>
+              </assignComponents.Tr>
+              <assignComponents.Tr className={classes.root_tr}>
+                <assignComponents.Td colSpan={9} className={classes.root_td}>
+                  <assignComponents.Table className={classes.calendar_table}>
+                    <assignComponents.TableBody
+                      className={classes.calendar_table_body}
+                    >
+                      <assignComponents.Tr className={classes.calendar_tr}>
+                        {columns.map(({ weekday }) => {
                           return (
-                            <assignComponents.Tr
-                              key={`__dates__${datesIndex}__`}
-                              className={classes.calendar_tr}
+                            <assignComponents.Th
+                              key={`__weekday__${weekday}__`}
+                              className={classes.calendar_th}
                             >
-                              {dates.map((datetime, dateIndex) => {
-                                return (
-                                  <assignComponents.Td
-                                    key={`__date__${dateIndex}__`}
-                                    className={classes.calendar_td}
-                                  >
-                                    <assignComponents.DateButton
-                                      className={classes.calendar_date_button}
-                                      data-date-active={
-                                        date
-                                          ? date.ordinal === datetime.ordinal
-                                          : false
-                                      }
-                                      onClick={handleChangeDate(datetime)}
-                                      children={datetime.day}
-                                    />
-                                  </assignComponents.Td>
-                                );
-                              })}
-                            </assignComponents.Tr>
+                              <assignComponents.Week>
+                                {currentDate.set({ weekday }).weekdayShort}
+                              </assignComponents.Week>
+                            </assignComponents.Th>
                           );
                         })}
+                      </assignComponents.Tr>
+                      {rows.map((dates, datesIndex) => {
+                        return (
+                          <assignComponents.Tr
+                            key={`__dates__${datesIndex}__`}
+                            className={classes.calendar_tr}
+                          >
+                            {dates.map((datetime, dateIndex) => {
+                              return (
+                                <assignComponents.Td
+                                  key={`__date__${dateIndex}__`}
+                                  className={classes.calendar_td}
+                                >
+                                  <assignComponents.DateButton
+                                    className={classes.calendar_date_button}
+                                    data-date-active={
+                                      date
+                                        ? date.ordinal === datetime.ordinal
+                                        : false
+                                    }
+                                    onClick={handleChangeDate(datetime)}
+                                    children={datetime.day}
+                                  />
+                                </assignComponents.Td>
+                              );
+                            })}
+                          </assignComponents.Tr>
+                        );
+                      })}
 
-                        <assignComponents.Tr className={classes.calendar_tr}>
-                          <assignComponents.Td
-                            colSpan={1}
-                            className={classes.calendar_td}
-                          >
-                            <assignComponents.ClockIcon
-                              className={classes.calendar_clock_icon}
-                            />
-                          </assignComponents.Td>
-                          <assignComponents.Td
-                            colSpan={2}
-                            className={classes.calendar_td}
-                          >
-                            <assignComponents.TimeInput
-                              className={classes.calendar_time_input}
-                              type="number"
-                              defaultValue={date?.hour.toString()}
-                              value={date?.hour.toString()}
-                              onChange={handleChangeTime(date, "hour", 0, 23)}
-                              disabled={date === null}
-                            />
-                          </assignComponents.Td>
-                          <assignComponents.Td
-                            colSpan={2}
-                            className={classes.calendar_td}
-                          >
-                            <assignComponents.TimeInput
-                              className={classes.calendar_time_input}
-                              type="number"
-                              defaultValue={date?.minute.toString()}
-                              value={date?.minute.toString()}
-                              onChange={handleChangeTime(date, "minute", 0, 59)}
-                              disabled={date === null}
-                            />
-                          </assignComponents.Td>
-                        </assignComponents.Tr>
-                        <assignComponents.Tr className={classes.calendar_tr}>
-                          <assignComponents.Td colSpan={3} />
-                          <assignComponents.Td
-                            colSpan={2}
-                            className={classes.calendar_td}
-                          >
-                            <assignComponents.NowButton
-                              className={classes.calendar_now_button}
-                              onClick={() => onChangeDate(DateTime.now())}
-                              children="Now"
-                            />
-                          </assignComponents.Td>
-                          <assignComponents.Td
-                            colSpan={2}
-                            className={classes.calendar_td}
-                          >
-                            <assignComponents.CloseButton
-                              className={classes.calendar_close_button}
-                              onClick={handleClose}
-                              children="Close"
-                            />
-                          </assignComponents.Td>
-                        </assignComponents.Tr>
-                      </assignComponents.TableBody>
-                    </assignComponents.Table>
-                  </assignComponents.Td>
-                </assignComponents.Tr>
-              </assignComponents.TableBody>
-            </assignComponents.Table>
-          </assignComponents.PickerContainer>
-        </Popover>
+                      <assignComponents.Tr className={classes.calendar_tr}>
+                        <assignComponents.Td
+                          colSpan={1}
+                          className={classes.calendar_td}
+                        >
+                          <assignComponents.ClockIcon
+                            className={classes.calendar_clock_icon}
+                          />
+                        </assignComponents.Td>
+                        <assignComponents.Td
+                          colSpan={2}
+                          className={classes.calendar_td}
+                        >
+                          <assignComponents.TimeInput
+                            className={classes.calendar_time_input}
+                            type="number"
+                            defaultValue={date?.hour.toString()}
+                            value={date?.hour.toString()}
+                            onChange={handleChangeTime(date, "hour", 0, 23)}
+                            disabled={date === null}
+                          />
+                        </assignComponents.Td>
+                        <assignComponents.Td
+                          colSpan={2}
+                          className={classes.calendar_td}
+                        >
+                          <assignComponents.TimeInput
+                            className={classes.calendar_time_input}
+                            type="number"
+                            defaultValue={date?.minute.toString()}
+                            value={date?.minute.toString()}
+                            onChange={handleChangeTime(date, "minute", 0, 59)}
+                            disabled={date === null}
+                          />
+                        </assignComponents.Td>
+                      </assignComponents.Tr>
+                      <assignComponents.Tr className={classes.calendar_tr}>
+                        <assignComponents.Td colSpan={3} />
+                        <assignComponents.Td
+                          colSpan={2}
+                          className={classes.calendar_td}
+                        >
+                          <assignComponents.NowButton
+                            className={classes.calendar_now_button}
+                            onClick={() => onChangeDate(DateTime.now())}
+                            children="Now"
+                          />
+                        </assignComponents.Td>
+                        <assignComponents.Td
+                          colSpan={2}
+                          className={classes.calendar_td}
+                        >
+                          <assignComponents.CloseButton
+                            className={classes.calendar_close_button}
+                            onClick={handleClose}
+                            children="Close"
+                          />
+                        </assignComponents.Td>
+                      </assignComponents.Tr>
+                    </assignComponents.TableBody>
+                  </assignComponents.Table>
+                </assignComponents.Td>
+              </assignComponents.Tr>
+            </assignComponents.TableBody>
+          </assignComponents.Table>
+        </assignComponents.PickerContainer>
       </assignComponents.Container>
     );
   },
